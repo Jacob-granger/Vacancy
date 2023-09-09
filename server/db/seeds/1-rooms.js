@@ -2,7 +2,7 @@ export async function seed(knex) {
   return await knex('rooms').insert([
     {
       id: 1,
-      address: 'Saint Clair, Dunedin',
+      address: 'Saint Clair, Whangarei',
       rent: 140,
       avail: '1st Dec, 2023',
       until: '1st Mar, 2024',

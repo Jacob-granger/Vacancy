@@ -25,7 +25,8 @@ export default function FillFind() {
               ml="14px"
               mt="10px"
               color="white"
-              fontSize="2xl"
+              // fontSize="2xl"
+              fontSize={['sm', 'md', 'lg']}
               textAlign="left"
             >
               Looking for a new flatmate?

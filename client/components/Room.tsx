@@ -1,22 +1,17 @@
 import {
-  Avatar,
   Box,
   Button,
-  Center,
-  Checkbox,
-  Grid,
-  GridItem,
   HStack,
   ScaleFade,
   Text,
   VStack,
   useDisclosure,
 } from '@chakra-ui/react'
-import { useState } from 'react'
 import RoomCheckList from './RoomCheckList.tsx'
 import Crew from './Crew.tsx'
+import { Room as RoomType } from '../../models/rooms.ts'
 
-export default function Room(props) {
+export default function Room(props: RoomType) {
   const { isOpen, onToggle } = useDisclosure()
 
   return !isOpen ? (

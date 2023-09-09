@@ -1,16 +1,8 @@
-import {
-  Avatar,
-  Box,
-  Center,
-  Flex,
-  Grid,
-  GridItem,
-  Text,
-} from '@chakra-ui/react'
+import { Avatar, Center, Grid, GridItem, Text } from '@chakra-ui/react'
 import { fetchCrew } from '../apis/api-rooms'
 import { useQuery } from '@tanstack/react-query'
 
-export default function Crew({ id }) {
+export default function Crew({ id }: { id: number }) {
   const {
     data: crew,
     isLoading,
@@ -36,26 +28,31 @@ export default function Crew({ id }) {
   return (
     <>
       <Grid templateColumns="repeat(2, 1fr)" columnGap={10} rowGap={2}>
-        {crew.map((member, index) => {
-          return (
-            <GridItem key={index} colSpan={1}>
-              <Avatar
-                bg="#ECECEC"
-                size="xl" // Set the size of the circle
-                src={member.image}
-                name={member.name} // Display a fallback name if the image fails to load
-                borderRadius="full" // Make the avatar appear as a circle
-              />
-              <Center>
-                <Text mt="10px" fontSize="xl">
-                  <strong>
-                    {member.name} - {member.age}
-                  </strong>
-                </Text>
-              </Center>
-            </GridItem>
-          )
-        })}
+        {crew.map(
+          (
+            member: { name: string; age: number; image: string },
+            index: number
+          ) => {
+            return (
+              <GridItem key={index} colSpan={1}>
+                <Avatar
+                  bg="#ECECEC"
+                  size="xl"
+                  src={member.image}
+                  name={member.name}
+                  borderRadius="full"
+                />
+                <Center>
+                  <Text mt="10px" fontSize="xl">
+                    <strong>
+                      {member.name} - {member.age}
+                    </strong>
+                  </Text>
+                </Center>
+              </GridItem>
+            )
+          }
+        )}
       </Grid>
     </>
   )

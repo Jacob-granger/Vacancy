@@ -14,8 +14,19 @@ router.get('/', async (req, res) => {
   }
 })
 
+// GET /api/v1/rooms/:search
+router.get('/:search', async (req, res) => {
+  try {
+    const searchValue = req.params.search
+    const searchResults = await db.getRoomsByAddress(searchValue)
+    res.json(searchResults)
+  } catch (error) {
+    res.sendStatus(500)
+    console.error(error)
+  }
+})
+
 router.get('/requirements/:id', async (req, res) => {
-  console.log(req.params.id)
   try {
     const id = Number(req.params.id)
     const requirements = await db.getRequirements(id)
@@ -27,7 +38,6 @@ router.get('/requirements/:id', async (req, res) => {
 })
 
 router.get('/crew/:id', async (req, res) => {
-  console.log(req.params.id)
   try {
     const id = Number(req.params.id)
     const crew = await db.getCrew(id)

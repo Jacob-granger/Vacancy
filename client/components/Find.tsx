@@ -1,27 +1,12 @@
-import {
-  Flex,
-  VStack,
-  Box,
-  Button,
-  Center,
-  InputGroup,
-  InputLeftElement,
-  Input,
-} from '@chakra-ui/react'
-import { SearchIcon } from '@chakra-ui/icons'
+import { Flex, VStack, Center, HStack } from '@chakra-ui/react'
 import Room from './Room.tsx'
+import SearchBar from './SearchBar.tsx'
+import { useRooms } from '../hooks/rooms.ts'
 import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
-import { fetchRequirements, fetchRooms } from '../apis/api-rooms.ts'
 
 export default function Find() {
-  // const id = 1
-  const { data: rooms, isError, isLoading } = useQuery(['rooms'], fetchRooms)
-  // const { data: requirements } = useQuery(['requirements', id], () =>
-  //   fetchRequirements(id)
-  // )
-  console.log(rooms)
-  // console.log(requirements)
+  const [searchValue, setSearchValue] = useState('')
+  const { data: rooms, isError, isLoading } = useRooms(searchValue)
 
   if (isError) {
     return (
@@ -41,23 +26,10 @@ export default function Find() {
     )
   }
 
-  return (
+  return rooms.length !== 0 ? (
     <Flex width="100vw" height="100%" justifyContent="center" mt={100} mb={100}>
       <VStack width="100%" spacing={10} alignItems="center">
-        <Box>
-          <InputGroup>
-            <InputLeftElement pointerEvents="none">
-              <SearchIcon color="gray.300" />
-            </InputLeftElement>
-            <Input
-              type="text"
-              placeholder="Search..."
-              borderColor="gray.200"
-              _hover={{ borderColor: 'gray.300' }}
-              _focus={{ borderColor: 'blue.400' }}
-            />
-          </InputGroup>
-        </Box>
+        <SearchBar setSearchValue={setSearchValue} />
         {rooms.map((room) => {
           return (
             <Room
@@ -74,5 +46,15 @@ export default function Find() {
         })}
       </VStack>
     </Flex>
+  ) : (
+    <Center mt={100}>
+      <VStack spacing={10}>
+        <SearchBar setSearchValue={setSearchValue} />
+        <p>
+          Oh no! There doesn&apos;t seem to be any room available that match
+          your search
+        </p>
+      </VStack>
+    </Center>
   )
 }

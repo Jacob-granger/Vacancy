@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Room } from '../../models/rooms'
+import { Room, RoomSearch } from '../../models/rooms'
 
 const apiUrl = '/api/v1/rooms'
 
@@ -9,20 +9,21 @@ export async function fetchRooms() {
   return response.body
 }
 
-export async function fetchRoomsBySearch(address: string): Promise<Room[]> {
-  const response = await request.get(`${apiUrl}/${address}`)
+// Get /api/v1/rooms/filter
+export async function fetchRoomsByFilter(params: RoomSearch): Promise<Room[]> {
+  const response = await request.post(`${apiUrl}/filter`).send(params)
   return response.body
 }
 
 // Get /api/v1/rooms/requirements/:id
-export async function fetchRequirements(id) {
+export async function fetchRequirements(id: number) {
   const newId = String(id)
   const response = await request.get(`${apiUrl}/requirements/${newId}`)
   return response.body
 }
 
 // Get /api/v1/rooms/crew/:id
-export async function fetchCrew(id) {
+export async function fetchCrew(id: number) {
   const newId = String(id)
   const response = await request.get(`${apiUrl}/crew/${newId}`)
   return response.body

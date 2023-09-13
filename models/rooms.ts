@@ -7,3 +7,9 @@ export interface Room {
   description: string
   image: string
 }
+
+export interface RoomSearch {
+  address: string | undefined
+  min: string | undefined
+  max: string | undefined
+}

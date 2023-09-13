@@ -1,16 +1,23 @@
-import { Room } from '../../models/rooms.ts'
+import { RoomSearch } from '../../models/rooms.ts'
 import db from './connection.ts'
 
 export async function getAllRooms() {
   const rooms = await db('rooms').select('*')
   return rooms
 }
+export function getRoomsByFilter(filterParams: RoomSearch) {
+  const rooms = db('rooms').select('*')
 
-export async function getRoomsByAddress(word: string): Promise<Room[]> {
-  const matches = await db('rooms')
-    .select('*')
-    .where('address', 'like', `%${word}%`)
-  return matches
+  if (filterParams.address) {
+    rooms.where('address', 'like', `%${filterParams.address}%`)
+  }
+  if (filterParams.min) {
+    rooms.where('rent', '>=', filterParams.min)
+  }
+  if (filterParams.max) {
+    rooms.where('rent', '<=', filterParams.max)
+  }
+  return rooms
 }
 
 export async function getRequirements(id: number) {

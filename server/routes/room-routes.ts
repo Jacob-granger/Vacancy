@@ -14,18 +14,19 @@ router.get('/', async (req, res) => {
   }
 })
 
-// GET /api/v1/rooms/:search
-router.get('/:search', async (req, res) => {
+// GET /api/v1/room/filter
+router.post('/filter', async (req, res) => {
   try {
-    const searchValue = req.params.search
-    const searchResults = await db.getRoomsByAddress(searchValue)
-    res.json(searchResults)
+    const filterParams = req.body
+    const results = await db.getRoomsByFilter(filterParams)
+    res.json(results)
   } catch (error) {
     res.sendStatus(500)
     console.error(error)
   }
 })
 
+// GET /api/v1/rooms/requirements/:id
 router.get('/requirements/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)
@@ -37,6 +38,7 @@ router.get('/requirements/:id', async (req, res) => {
   }
 })
 
+// GET /api/v1/rooms/crew/:id
 router.get('/crew/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)

@@ -76,7 +76,7 @@ export default function Find() {
               </>
             ) : (
               <p>
-                Oh no! There doesn&apos;t seem to be any room available that
+                Oh no! There doesn&apos;t seem to be any rooms available that
                 match your search
               </p>
             )}

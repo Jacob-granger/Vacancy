@@ -8,7 +8,8 @@ function Home() {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        height="40vh"
+        height="30vh"
+        mt="100px"
       >
         <div>
           <Text fontSize="6xl" fontWeight="bold" textAlign="center">

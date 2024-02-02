@@ -1,11 +1,13 @@
 import {
   Box,
   Button,
+  Flex,
   HStack,
   ScaleFade,
   Text,
   VStack,
   useDisclosure,
+  Image,
 } from '@chakra-ui/react'
 import RoomCheckList from './RoomCheckList.tsx'
 import Crew from './Crew.tsx'
@@ -16,14 +18,28 @@ export default function Room(props: RoomType) {
 
   return !isOpen ? (
     <Box boxShadow="0px 8px 12px rgba(0, 0, 0, 0.6)" width="40%" height="400px">
-      <Box bg="#0147AB" p={5} color="white" fontSize="3xl">
+      <Flex
+        bg="#0147AB"
+        color="white"
+        fontSize={{ sm: '20px', md: '25px', xl: '30px' }}
+        w="100%"
+        height="20%"
+        align="center"
+        pl="15px"
+      >
         <h2>
           <strong>{props.address}</strong>
         </h2>
-      </Box>
-      <HStack>
-        <Box width="60%" p={5}>
-          <img src={props.image} alt="room at 43 Mains Avenue" />
+      </Flex>
+      <HStack h="80%" gap="0">
+        <Box width="60%" height="100%" p="20px">
+          <Image
+            fit="cover"
+            w="100%"
+            h="100%"
+            src={props.image}
+            alt="room at 43 Mains Avenue"
+          />
         </Box>
         <VStack
           spacing={5}

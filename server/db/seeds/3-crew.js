@@ -4,22 +4,19 @@ export async function seed(knex) {
       room_id: 1,
       name: 'Ed',
       age: 21,
-      image:
-        'https://cn.i.cdn.ti-platform.com/cnemea/content/377/showpage/ed-edd-n-eddy/uk/ededdneddy_icon.png',
+      image: null,
     },
     {
       room_id: 1,
       name: 'Edd',
       age: 22,
-      image:
-        'https://www.nicepng.com/png/detail/220-2205181_edd-ed-edd-n-eddy.png',
+      image: null,
     },
     {
       room_id: 1,
       name: 'Eddy',
       age: 23,
-      image:
-        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo0kjCGrM2KoqlGHuCr4jW6xTUOtTPEZM8lA&usqp=CAU',
+      image: null,
     },
     {
       room_id: 2,

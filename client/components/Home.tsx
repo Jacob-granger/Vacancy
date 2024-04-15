@@ -16,8 +16,7 @@ function Home() {
             Welcome to Vacancy!
           </Text>
           <Text fontSize="xl" mt={2} textAlign="center">
-            We&apos;re here to help you find the perfect match for your next
-            flat.
+            We&apos;re here to help you find the perfect match for your flat.
           </Text>
         </div>
       </Box>

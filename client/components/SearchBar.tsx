@@ -68,21 +68,6 @@ export default function SearchBar(props: Props) {
           </FormControl>
 
           <FormControl width="30%">
-            <FormLabel htmlFor="min">Min Rent (pw)</FormLabel>
-            <InputGroup>
-              {/* eslint-disable-next-line react/no-children-prop */}
-              <InputLeftAddon children="$" />
-              <Input
-                id="min"
-                name="min"
-                type="number"
-                placeholder="any"
-                value={filter.min}
-                onChange={handleFilterChange}
-              ></Input>
-            </InputGroup>
-          </FormControl>
-          <FormControl width="30%">
             <FormLabel htmlFor="max">Max Rent (pw)</FormLabel>
             <InputGroup>
               {/* eslint-disable-next-line react/no-children-prop */}
@@ -97,9 +82,24 @@ export default function SearchBar(props: Props) {
               ></Input>
             </InputGroup>
           </FormControl>
+          <FormControl width="30%">
+            <FormLabel htmlFor="min">Min Rent (pw)</FormLabel>
+            <InputGroup>
+              {/* eslint-disable-next-line react/no-children-prop */}
+              <InputLeftAddon children="$" />
+              <Input
+                id="min"
+                name="min"
+                type="number"
+                placeholder="any"
+                value={filter.min}
+                onChange={handleFilterChange}
+              ></Input>
+            </InputGroup>
+          </FormControl>
 
           <Button width="20%" type="submit">
-            Apply
+            Find
           </Button>
           <Button onClick={handleClear} width="20%">
             Clear

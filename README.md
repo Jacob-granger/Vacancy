@@ -4,25 +4,10 @@ Welcome to the Vacancy! This is a work-in-progress (WIP) project that aims to pr
 
 ## Setup
 
-### 0. Cloning and installation
+1. Clone this repository
+2. Install dependencies: npm i
+3. Run migrations & seeds: npm run knex migrate:latest; npm run knex migrate seed:run
+4. Start the server: npm run dev
 
-- [ ] Clone this repo, navigate to it, install packages, and start the server with `npm run dev`
-  <details style="padding-left: 2em">
-    <summary>Tip</summary>
-
-    You may also want to start a new branch
-    ```sh
-    cd my-fullstack-collection
-    npm i
-    git checkout -b <branchname>
-    npm run dev
-    ```
-  </details>
-
-<details>
-  <summary>More about using <code>npm</code> vs <code>npx</code></summary>
-
-  - When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
-</details>
-
+Note: "Find a Room" Is currently the only fature from the home page with functionality implemented" More coming soon!
 ---
